@@ -1,29 +1,52 @@
-import React from 'react';
-import { Table} from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap';
 
 export default function EventsTable({ eventsUrl }) {
-  return (
-    <>
+    const [events, setEvents] = useState([])
+
+    useEffect(() => {
+        if (!eventsUrl) return;
+        async function fetchData() {
+            const res = await fetch(eventsUrl);
+            const resData = await res.json();
+            setEvents(resData);
+        }
+        fetchData();
+
+    }, [eventsUrl])
+
+    return (
+        <>
             <h2>Events Table</h2>
             <p>{eventsUrl}</p>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Event ID</th>
+                        <th>Type</th>
+                        <th>User</th>
+                        <th>Repo</th>
+                        <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    {events && events.map((event, index) => {
+                        return (
+                            <tr key={event.id}>
+                                <td>{event.id}</td>
+                                <td>{event.type}</td>
+                                <td>{event.actor.display_login}</td>
+                                <td>
+                                    <a href={`https://github.com/${event.repo.name}`} target="_blank" rel="noopener noreferrer">{event.repo.name}</a>
+                                </td>
+                                <td>
+                                    {event.created_at}
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </Table>
         </>
-  )
+    )
 }
