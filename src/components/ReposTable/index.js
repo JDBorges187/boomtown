@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 
-export default function ReposTable({ reposUrl }) {
-    
+export default function ReposTable({ reposUrl, reposFromArray, setReposFromArray }) {
+
     const [repos, setRepos] = useState([]);
 
     useEffect(() => {
-        if(!reposUrl) return;
+        if (!reposUrl) return;
         async function fetchData() {
             const res = await fetch(reposUrl);
             const resData = await res.json();
             setRepos(resData);
+            // repos limited to 30 per page
+            // in order to get all repos, loop through pages
+            // left as is for now to show fail with other orgs
+            setReposFromArray(resData.length);
+            
+            // const gitLinks = res.headers.get('link');
+            // console.log(gitLinks.split(','));
         }
         fetchData();
-    
+
     }, [reposUrl])
 
     return (
