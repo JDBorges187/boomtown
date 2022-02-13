@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row , Col} from 'react-bootstrap'
-import ReposTable from './components/ReposTable'
 import TopLevel from './components/TopLevel'
+import ReposTable from './components/ReposTable'
 import EventsTable from './components/EventsTable'
+import Hooks from './components/Hooks'
+import Issues from './components/Issues'
 import MembersTable from './components/MembersTable'
 
 export default function App() {
@@ -43,6 +45,12 @@ export default function App() {
         </Row>
         <Row>
           <Col><EventsTable eventsUrl={eventsUrl}/></Col>
+        </Row>
+        <Row>
+          <Col><Hooks hooksUrl={hooksUrl}/></Col>
+        </Row>
+        <Row>
+          <Col><Issues issuesUrl={issuesUrl}/></Col>
         </Row>
         <Row>
           <Col><MembersTable membersUrl={membersUrl} /></Col>
