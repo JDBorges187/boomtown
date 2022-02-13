@@ -9,18 +9,20 @@ To accomplish this I used React on the frontend with Bootstrap as a CSS library.
 
 ## Repos
 Generate a list of Repos by the organization and display it as a table
-
+![repos-table](https://raw.githubusercontent.com/JDBorges187/boomtown/main/screenshots/repos-table.jpg)
 
 ## Events
 Generate a list of Events by the organization and display it as a table
-
+![repos-table](https://raw.githubusercontent.com/JDBorges187/boomtown/main/screenshots/events-table.jpg)
 
 ## Hooks and Issues
 Requesting hooks and issues produces a 404 error. Handle the error and display a warning to user.
+![hooks-issues](https://raw.githubusercontent.com/JDBorges187/boomtown/main/screenshots/hooks-issues.jpg)
 
 ## Verifications
 * Verify created_at date is before or equal to updated_at date
 * Verify number of repos 
+![verifications](https://raw.githubusercontent.com/JDBorges187/boomtown/main/screenshots/verifications.jpg)
 
 ## Future additions
 > Given more time I would implement the following improvements
