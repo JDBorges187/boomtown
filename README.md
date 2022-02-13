@@ -2,6 +2,7 @@
 
 ## Install
 * To install this project clone it to your local drive and run ```npm install```
+* To start the server run ```npm start```
 
 ## Access Github API
 The goal with this application was to hit Github API to request data such as repos, events and members and display to the user in a meaningful way.
