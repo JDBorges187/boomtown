@@ -24,7 +24,7 @@ export default function App() {
       setEventsUrl(resData.events_url)
       setHooksUrl(resData.hooks_url)
       setIssuesUrl(resData.issues_url)
-      setMembersUrl(resData.members_url)
+      setMembersUrl(resData.members_url.split('{')[0])
     }
     fetchData();
   }, [])
